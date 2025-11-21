@@ -2,27 +2,63 @@ name: Daily RAG Update
 
 on:
   schedule:
-    - cron: '0 7 * * *'  # runs every day at 07:00 UTC
-  workflow_dispatch:      # allows manual run
+    - cron: "0 * * * *"   # runs every hour
+  workflow_dispatch:      # allows manual trigger
 
 jobs:
-  update_rag:
+  update-rag:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repo
-      uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.11
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
-    - name: Run daily RAG update
-      run: |
-        python scripts/update_rag.py
+      - name: Run update script
+        run: python scripts/update_rag.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add .
+          git commit -m "Auto RAG update" || echo "No changes"
+          git push
+
+      - name: Read new articles file
+        id: new_articles
+        run: |
+          if [ -f new_articles.txt ]; then
+            CONTENT=$(cat new_articles.txt)
+            echo "content<<EOF" >> $GITHUB_OUTPUT
+            echo "$CONTENT" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          else
+            echo "content=NO_NEW_ARTICLES" >> $GITHUB_OUTPUT
+
+      - name: Send notification email
+        if: ${{ steps.new_articles.outputs.content != 'NO_NEW_ARTICLES' }}
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_EMAIL }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "New Marketing Articles Added Today"
+          to: "ichaoui.shaima@gmail.com"
+          from: "Marketing RAG <${{ secrets.SMTP_EMAIL }}>"
+          body: |
+            Hello Chaima,
+
+            Your daily marketing knowledge RAG pipeline has added new articles today!
+
+            Here is the list:
+
+            ${{ steps.new_articles.outputs.content }}

@@ -83,6 +83,7 @@ def scrape_full_article(url):
 
 # --------------------- Scrape RSS ---------------------
 def scrape_rss_feeds():
+    added_articles=[]
     articles = load_articles()
     added = 0
     now = datetime.now(timezone.utc)
@@ -127,10 +128,11 @@ def scrape_rss_feeds():
                 "content": content
             }
             added += 1
+            added_articles.append(articles[url])
 
     save_articles(articles)
     print(f"✔ Added {added} new articles from today")
-    return list(articles.values())
+    return list(articles.values()),added_articles
 
 # --------------------- Update FAISS ---------------------
 def update_rag_with_articles(vectorstore, articles):
@@ -159,12 +161,21 @@ def main():
         print("✔ Created new FAISS index")
 
     # Scrape articles & update RAG
-    articles = scrape_rss_feeds()
+    articles,url = scrape_rss_feeds()
     update_rag_with_articles(vectorstore, articles)
 
     # Save FAISS index
     vectorstore.save_local(VECTORSTORE_FOLDER)
     print("✔ FAISS index updated")
+    # Save list of new article URLs for GitHub email step
+    if url:
+        with open("new_articles.txt", "w", encoding="utf-8") as f:
+            for a in url:
+                f.write(f"{a['title']} - {a['url']}\n")
+    else:
+        with open("new_articles.txt", "w", encoding="utf-8") as f:
+            f.write("NO_NEW_ARTICLES")
+
 
 if __name__ == "__main__":
     main()
