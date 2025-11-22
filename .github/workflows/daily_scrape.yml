@@ -53,10 +53,10 @@ jobs:
         if: ${{ steps.new_articles.outputs.content != 'NO_NEW_ARTICLES' }}
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: "smtp.sendgrid.net"
-          server_port: 587
-          username: "apikey"                         # SendGrid requires this fixed value
-          password: ${{ secrets.SENDGRID_API_KEY }}  # Your secret
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_EMAIL }}
+          password: ${{ secrets.SMTP_PASSWORD }}
           subject: "New Marketing Articles Added Today"
           to: "ichaoui.shaima@gmail.com"
           from: "Marketing RAG <${{ secrets.SMTP_EMAIL }}>"
