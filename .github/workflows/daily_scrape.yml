@@ -2,8 +2,11 @@ name: Daily RAG Update
 
 on:
   schedule:
-    - cron: "0 * * * *"   # runs every hour
-  workflow_dispatch:      # allows manual trigger
+    - cron: "0 * * * *"   # Runs every hour
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   update-rag:
@@ -12,6 +15,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -22,7 +27,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run update script
-        run: python scripts/daily_update.py
+        run: python scripts/daily_rag.py
 
       - name: Commit and push changes
         run: |
@@ -42,15 +47,16 @@ jobs:
             echo "EOF" >> $GITHUB_OUTPUT
           else
             echo "content=NO_NEW_ARTICLES" >> $GITHUB_OUTPUT
+          fi
 
       - name: Send notification email
         if: ${{ steps.new_articles.outputs.content != 'NO_NEW_ARTICLES' }}
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: ${{ secrets.SMTP_SERVER }}
-          server_port: ${{ secrets.SMTP_PORT }}
-          username: ${{ secrets.SMTP_EMAIL }}
-          password: ${{ secrets.SMTP_PASSWORD }}
+          server_address: "smtp.sendgrid.net"
+          server_port: 587
+          username: "apikey"                         # SendGrid requires this fixed value
+          password: ${{ secrets.SENDGRID_API_KEY }}  # Your secret
           subject: "New Marketing Articles Added Today"
           to: "ichaoui.shaima@gmail.com"
           from: "Marketing RAG <${{ secrets.SMTP_EMAIL }}>"
