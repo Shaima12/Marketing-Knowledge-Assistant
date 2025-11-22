@@ -22,7 +22,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run update script
-        run: python scripts/update_rag.py
+        run: python scripts/daily_update.py
 
       - name: Commit and push changes
         run: |
