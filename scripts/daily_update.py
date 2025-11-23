@@ -15,6 +15,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 
 VECTORSTORE_FOLDER = "data/vectorstore/faiss_index"
 DATA_FILE = "articles.json"
+NEW_FILE = "new_articles.json"
 MIN_ARTICLE_LENGTH = 200
 MIN_CHUNK_LENGTH = 20
 HEADERS = {"User-Agent": "Mozilla/5.0"}
@@ -61,8 +62,8 @@ def load_articles():
         return {a["url"]: a for a in data if "url" in a}
     return {}
 
-def save_articles(data):
-    with open(DATA_FILE, "w", encoding="utf-8") as f:
+def save_articles(data, file_path=DATA_FILE):
+    with open(file_path, "w", encoding="utf-8") as f:
         json.dump(list(data.values()), f, indent=2, ensure_ascii=False)
 
 # --------------------- Scrape Full Article ---------------------
@@ -82,15 +83,21 @@ def scrape_full_article(url):
         return None
 
 # --------------------- Scrape RSS ---------------------
+from datetime import timedelta
+
 def scrape_rss_feeds():
-    added_articles=[]
-    articles = load_articles()
+    all_articles = load_articles()
+    new_articles = []
     added = 0
-    now = datetime.now(timezone.utc)
-    today = now.date()
+    today = datetime.now(timezone.utc).date()  # current UTC date
 
     for feed_url in RSS_FEEDS:
-        feed = feedparser.parse(feed_url)
+        try:
+            feed = feedparser.parse(feed_url)
+        except Exception as e:
+            print(f"⚠ Failed to parse RSS feed {feed_url}: {e}")
+            continue
+
         for entry in feed.entries:
             url = entry.get("link")
             title = entry.get("title")
@@ -107,32 +114,37 @@ def scrape_rss_feeds():
                     published_date = published_date.replace(tzinfo=timezone.utc)
                 else:
                     published_date = published_date.astimezone(timezone.utc)
-            except:
+            except Exception as e:
+                print(f"⚠ Failed to parse date for {url}: {e}")
                 continue
 
-            # Filter: only today
+            # Only articles published today (UTC)
             if published_date.date() != today:
                 continue
 
-            if url in articles:
+            if url in all_articles:
                 continue
 
             content = scrape_full_article(url)
             if not content:
                 continue
 
-            articles[url] = {
+            article_data = {
                 "url": url,
                 "title": title,
                 "date": published_date.isoformat(),
                 "content": content
             }
-            added += 1
-            added_articles.append(articles[url])
 
-    save_articles(articles)
+            all_articles[url] = article_data
+            new_articles.append(article_data)
+            added += 1
+
+    # Save new articles and update main file
+    save_articles({a["url"]: a for a in new_articles}, NEW_FILE)
+    save_articles(all_articles)
     print(f"✔ Added {added} new articles from today")
-    return list(articles.values()),added_articles
+    return list(all_articles.values()), new_articles
 
 # --------------------- Update FAISS ---------------------
 def update_rag_with_articles(vectorstore, articles):
@@ -152,7 +164,6 @@ def update_rag_with_articles(vectorstore, articles):
 
 # --------------------- MAIN ---------------------
 def main():
-    # Load existing FAISS index
     if os.path.exists(VECTORSTORE_FOLDER):
         vectorstore = FAISS.load_local(VECTORSTORE_FOLDER, embeddings, allow_dangerous_deserialization=True)
         print("✔ Loaded existing FAISS index")
@@ -160,22 +171,20 @@ def main():
         vectorstore = FAISS.from_documents([], embeddings)
         print("✔ Created new FAISS index")
 
-    # Scrape articles & update RAG
-    articles,url = scrape_rss_feeds()
-    update_rag_with_articles(vectorstore, articles)
+    all_articles, new_articles = scrape_rss_feeds()
+    if new_articles:
+        update_rag_with_articles(vectorstore, new_articles)
 
-    # Save FAISS index
     vectorstore.save_local(VECTORSTORE_FOLDER)
     print("✔ FAISS index updated")
-    # Save list of new article URLs for GitHub email step
-    if url:
-        with open("new_articles.txt", "w", encoding="utf-8") as f:
-            for a in url:
-                f.write(f"{a['title']} - {a['url']}\n")
-    else:
-        with open("new_articles.txt", "w", encoding="utf-8") as f:
-            f.write("NO_NEW_ARTICLES")
 
+    # Save list of new article URLs for GitHub email step
+    with open("new_articles.txt", "w", encoding="utf-8") as f:
+        if new_articles:
+            for a in new_articles:
+                f.write(f"{a['title']} - {a['url']}\n")
+        else:
+            f.write("NO_NEW_ARTICLES")
 
 if __name__ == "__main__":
     main()
