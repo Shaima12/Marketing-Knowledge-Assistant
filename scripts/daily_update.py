@@ -163,7 +163,9 @@ def update_rag_with_articles(vectorstore, articles):
         print(f"✔ Added {len(new_docs)} article chunks to the vector store")
 
 # --------------------- MAIN ---------------------
+# --------------------- MAIN ---------------------
 def main():
+    # Load existing FAISS index
     if os.path.exists(VECTORSTORE_FOLDER):
         vectorstore = FAISS.load_local(VECTORSTORE_FOLDER, embeddings, allow_dangerous_deserialization=True)
         print("✔ Loaded existing FAISS index")
@@ -171,19 +173,23 @@ def main():
         vectorstore = FAISS.from_documents([], embeddings)
         print("✔ Created new FAISS index")
 
-    all_articles, new_articles = scrape_rss_feeds()
-    if new_articles:
-        update_rag_with_articles(vectorstore, new_articles)
+    # Scrape articles & get today's new articles only
+    all_articles, new_articles_today = scrape_rss_feeds()
 
+    # Update FAISS with only today's new articles
+    update_rag_with_articles(vectorstore, new_articles_today)
+
+    # Save FAISS index
     vectorstore.save_local(VECTORSTORE_FOLDER)
     print("✔ FAISS index updated")
 
-    # Save list of new article URLs for GitHub email step
-    with open("new_articles.txt", "w", encoding="utf-8") as f:
-        if new_articles:
-            for a in new_articles:
+    # Save list of today's new articles to new_articles.txt
+    if new_articles_today:
+        with open("new_articles.txt", "w", encoding="utf-8") as f:
+            for a in new_articles_today:
                 f.write(f"{a['title']} - {a['url']}\n")
-        else:
+    else:
+        with open("new_articles.txt", "w", encoding="utf-8") as f:
             f.write("NO_NEW_ARTICLES")
 
 if __name__ == "__main__":
