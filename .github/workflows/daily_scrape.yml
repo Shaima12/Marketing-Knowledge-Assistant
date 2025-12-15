@@ -18,13 +18,25 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      # 🔥 VERY IMPORTANT — free disk space
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/lib/android
+          sudo apt-get clean
+          df -h
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
+
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r requirements.txt --no-cache-dir
 
       - name: Run update script
         run: python scripts/daily_update.py
@@ -34,16 +46,15 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
           git add .
-          git commit -m "Auto RAG update" || echo "No changes"
+          git commit -m "Auto RAG update" || echo "No changes to commit"
           git push
 
       - name: Read new articles file
         id: new_articles
         run: |
           if [ -f new_articles.txt ]; then
-            CONTENT=$(cat new_articles.txt)
             echo "content<<EOF" >> $GITHUB_OUTPUT
-            echo "$CONTENT" >> $GITHUB_OUTPUT
+            cat new_articles.txt >> $GITHUB_OUTPUT
             echo "EOF" >> $GITHUB_OUTPUT
           else
             echo "content=NO_NEW_ARTICLES" >> $GITHUB_OUTPUT
