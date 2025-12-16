@@ -46,17 +46,19 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
       
-          git add articles.json new_articles.json new_articles.txt
+          # Add files only if they exist
+          [ -f articles.json ] && git add articles.json
+          [ -f articles/new_articles.json ] && git add articles/new_articles.json
+          [ -f articles/new_articles.txt ] && git add articles/new_articles.txt
+      
           git commit -m "Auto RAG update" || echo "No changes to commit"
       
-          # Fetch latest remote changes
+          # Pull latest remote changes safely
           git fetch origin main
-      
-          # Merge remote changes into your branch safely
           git merge --no-ff origin/main -m "Merge remote changes" || echo "Nothing to merge"
       
-          # Push the changes
           git push origin main
+
 
 
 
