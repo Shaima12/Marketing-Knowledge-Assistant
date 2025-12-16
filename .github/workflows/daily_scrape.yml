@@ -41,13 +41,21 @@ jobs:
       - name: Run update script
         run: python scripts/daily_update.py
 
-      - name: Commit and push changes
+      - name: Commit and push changes safely
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
-          git add .
+      
+          git add articles.json new_articles.json new_articles.txt
           git commit -m "Auto RAG update" || echo "No changes to commit"
-          git push
+      
+          # Pull latest changes and merge safely
+          git fetch origin main
+          git merge --no-ff origin/main -m "Merge remote changes" || echo "Nothing to merge"
+      
+          # Push
+          git push origin main
+
 
       - name: Read new articles file
         id: new_articles
