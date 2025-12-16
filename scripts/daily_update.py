@@ -24,7 +24,7 @@ qdrant = QdrantClient(
 # ===================== CONFIG =====================
 COLLECTION_NAME = "general_docs"
 DATA_FILE = "articles.json"
-NEW_FILE = "new_articles.json"
+NEW_FILE = "Articles\new_articles.json"
 MIN_ARTICLE_LENGTH = 200
 MIN_CHUNK_LENGTH = 40
 HEADERS = {"User-Agent": "Mozilla/5.0"}
