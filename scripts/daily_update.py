@@ -219,11 +219,11 @@ def main():
     if new_articles:
         upsert_to_qdrant(new_articles)
 
-        with open("new_articles.txt", "w", encoding="utf-8") as f:
+        with open("Articles\new_articles.txt", "w", encoding="utf-8") as f:
             for a in new_articles:
                 f.write(f"{a['title']} - {a['url']}\n")
     else:
-        with open("new_articles.txt", "w", encoding="utf-8") as f:
+        with open("Articles\new_articles.txt", "w", encoding="utf-8") as f:
             f.write("NO_NEW_ARTICLES")
 
     print("🎉 Pipeline finished")
