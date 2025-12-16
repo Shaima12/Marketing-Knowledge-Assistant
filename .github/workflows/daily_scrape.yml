@@ -53,11 +53,11 @@ jobs:
       
           git commit -m "Auto RAG update" || echo "No changes to commit"
       
-          # Pull latest remote changes safely
           git fetch origin main
           git merge --no-ff origin/main -m "Merge remote changes" || echo "Nothing to merge"
       
           git push origin main
+
 
 
 
