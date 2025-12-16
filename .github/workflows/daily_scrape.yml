@@ -49,12 +49,15 @@ jobs:
           git add articles.json new_articles.json new_articles.txt
           git commit -m "Auto RAG update" || echo "No changes to commit"
       
-          # Pull latest changes and merge safely
+          # Fetch latest remote changes
           git fetch origin main
+      
+          # Merge remote changes into your branch safely
           git merge --no-ff origin/main -m "Merge remote changes" || echo "Nothing to merge"
       
-          # Push
+          # Push the changes
           git push origin main
+
 
 
       - name: Read new articles file
