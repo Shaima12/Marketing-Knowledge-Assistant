@@ -24,7 +24,7 @@ qdrant = QdrantClient(
 # ===================== CONFIG =====================
 COLLECTION_NAME = "general_docs"
 DATA_FILE = "articles.json"
-NEW_FILE = "Articles\new_articles.json"
+NEW_FILE = "new_articles.json"
 MIN_ARTICLE_LENGTH = 200
 MIN_CHUNK_LENGTH = 40
 HEADERS = {"User-Agent": "Mozilla/5.0"}
@@ -219,11 +219,11 @@ def main():
     if new_articles:
         upsert_to_qdrant(new_articles)
 
-        with open("Articles\new_articles.txt", "w", encoding="utf-8") as f:
+        with open("new_articles.txt", "w", encoding="utf-8") as f:
             for a in new_articles:
                 f.write(f"{a['title']} - {a['url']}\n")
     else:
-        with open("Articles\new_articles.txt", "w", encoding="utf-8") as f:
+        with open("new_articles.txt", "w", encoding="utf-8") as f:
             f.write("NO_NEW_ARTICLES")
 
     print("🎉 Pipeline finished")
