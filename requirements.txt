@@ -3,9 +3,9 @@ requests
 beautifulsoup4
 readability-lxml
 python-dateutil
-faiss-cpu
 langchain-community
 langchain-core
 langchain-text-splitters
 langchain-huggingface
 sentence-transformers
+qdrant-client
