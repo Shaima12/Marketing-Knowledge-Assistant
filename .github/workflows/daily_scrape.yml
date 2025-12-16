@@ -48,8 +48,8 @@ jobs:
       
           # Add files only if they exist
           [ -f articles.json ] && git add articles.json
-          [ -f articles/new_articles.json ] && git add articles/new_articles.json
-          [ -f articles/new_articles.txt ] && git add articles/new_articles.txt
+          [ -f Articles/new_articles.json ] && git add Articles/new_articles.json
+          [ -f Articles/new_articles.txt ] && git add Articles/new_articles.txt
       
           git commit -m "Auto RAG update" || echo "No changes to commit"
       
