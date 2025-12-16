@@ -43,23 +43,21 @@ jobs:
 
       - name: Commit and push changes safely
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "actions@github.com"
-      
-          # Add files only if they exist
-          [ -f articles.json ] && git add articles.json
-          [ -f new_articles.json ] && git add new_articles.json
-          [ -f new_articles.txt ] && git add new_articles.txt
-      
-          git commit -m "Auto RAG update" || echo "No changes to commit"
-      
-          git fetch origin main
-          git merge --no-ff origin/main -m "Merge remote changes" || echo "Nothing to merge"
-      
-          git push origin main
-
-
-
+            git config --global user.name "github-actions"
+            git config --global user.email "actions@github.com"
+        
+            # Pull latest changes FIRST
+            git pull origin main --rebase || echo "Nothing to pull"
+        
+            # Add files only if they exist
+            [ -f articles.json ] && git add articles.json
+            [ -f new_articles.json ] && git add new_articles.json
+            [ -f new_articles.txt ] && git add new_articles.txt
+        
+            # Commit only if something changed
+            git commit -m "Auto RAG update" || echo "No changes to commit"
+        
+            git push origin main
 
 
       - name: Read new articles file
