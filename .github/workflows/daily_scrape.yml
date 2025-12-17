@@ -61,17 +61,17 @@ jobs:
         if: ${{ steps.new_articles.outputs.content != 'NO_NEW_ARTICLES' }}
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: ${{ secrets.SMTP_SERVER }}
-          server_port: ${{ secrets.SMTP_PORT }}
-          username: ${{ secrets.SMTP_EMAIL }}
+          server_address: smtp.sendgrid.net
+          server_port: 587
+          username: apikey
           password: ${{ secrets.SMTP_PASSWORD }}
           subject: "New Marketing Articles Added Today"
           to: "ichaoui.shaima@gmail.com"
-          from: "Marketing RAG <${{ secrets.SMTP_EMAIL }}>"
+          from: "Marketing RAG<MarketMind@gmail.com>"
           body: |
             Hello Chaima,
 
-            Your daily marketing knowledge RAG pipeline has added new articles today!
+            Your daily marketing knowledge assistant has added new articles today!
 
             Here is the list:
 
