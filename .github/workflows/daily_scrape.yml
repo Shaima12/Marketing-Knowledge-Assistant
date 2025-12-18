@@ -67,7 +67,7 @@ jobs:
           password: ${{ secrets.SMTP_PASSWORD }}
           subject: "New Marketing Articles Added Today"
           to: "ichaoui.shaima@gmail.com"
-          from: "Marketing RAG<marketing-knowledge@assistant.com>"
+          from: "Marketing RAG<ichaoui.shaima@gmail.com>"
           body: |
             Hello Chaima,
 
