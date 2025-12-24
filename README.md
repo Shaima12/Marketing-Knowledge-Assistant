@@ -176,4 +176,6 @@ graph TD
     G --> H[✅ Deliver TikTok Ad Copy]
     H --> I[💾 Update Long-term Memory]
 ```
+![Demo Screenshot](images/demo.png)
+
 </div>
