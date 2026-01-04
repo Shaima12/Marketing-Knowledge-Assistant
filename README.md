@@ -78,8 +78,7 @@
 
 ### 🧠 LLM Providers
 - **⚡ Groq API** - Ultra-fast inference (Llama-3.1-8b-instant)
-- **Anthropic Claude** - Advanced query understanding
-- **OpenAI** - Alternative backend support
+
 
 ### 📄 Document Processing
 - **PyMuPDF** - PDF text extraction and manipulation
