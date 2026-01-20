@@ -1,1 +1,4 @@
-Why Loop Marketing matters in 2026, according to our State of Marketing report - https://blog.hubspot.com/marketing/loop-marketing-trends
+Case Study: How Entity Linking Can Support Local Search Success via @sejournal, @marthavanberkel - https://www.searchenginejournal.com/case-study-how-entity-linking-can-support-local-search-success/563074/
+Perplexity AI Interview Explains How AI Search Works via @sejournal, @martinibuster - https://www.searchenginejournal.com/perplexity-ai-interview-explains-how-ai-search-works/565395/
+IAB launches Event and Conversion API to standardize advertisers’ shared data - https://martech.org/iab-launches-event-and-conversion-api-to-standardize-advertisers-shared-data/
+Why engagement metrics matter more than sessions in AI search - https://martech.org/why-engagement-metrics-matter-more-than-sessions-in-ai-search/
