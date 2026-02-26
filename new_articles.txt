@@ -1,1 +1,2 @@
-From Visibility Engineering To Preference Engineering: The Rise Of The Infinite Tail via @sejournal, @TaylorDanRW - https://www.searchenginejournal.com/visibility-enginerring-preference-engineering-the-infinite-tail/567557/
+When Google Is No Longer A Verb: Search Becoming Infrastructure via @sejournal, @DuaneForrester - https://www.searchenginejournal.com/when-google-is-no-longer-a-verb-search-becoming-infrastructure/568135/
+How Researchers Reverse-Engineered LLMs For A Ranking Experiment via @sejournal, @martinibuster - https://www.searchenginejournal.com/how-researchers-reverse-engineered-llms-for-a-ranking-experiment/568279/
