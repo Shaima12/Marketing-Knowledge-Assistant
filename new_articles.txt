@@ -1,5 +1,1 @@
-How to rank in AI search results: Expert best practices - https://blog.hubspot.com/marketing/ai-search-ranking
-Google Is Becoming A Personalizing Mirror Before You Even Type A Query via @sejournal, @TaylorDanRW - https://www.searchenginejournal.com/the-search-mirror-personal-intelligence-and-agentic-browsing/578430/
-Google Exposes The Fundamental Flaw Of LLMs.txt via @sejournal, @martinibuster - https://www.searchenginejournal.com/google-exposes-llms-txt-flaw/579814/
-Google Tightens Requirements For Domain Migrations via @sejournal, @martinibuster - https://www.searchenginejournal.com/google-tightens-requirements-for-domain-migrations/579781/
-Why Calling Yourself The Best Could Be Helping Your Competitors Win In AI Search via @sejournal, @lilyraynyc - https://www.searchenginejournal.com/why-calling-yourself-the-best-could-be-helping-your-competitors-win-in-ai-search/579778/
+Rank And AI Citation Aren’t The Same Number via @sejournal, @DuaneForrester - https://www.searchenginejournal.com/rank-and-ai-citation-arent-the-same-number/579202/
