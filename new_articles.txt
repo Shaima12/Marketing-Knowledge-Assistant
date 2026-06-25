@@ -1,3 +1,2 @@
-CRM administration: Roles and best practices guide - https://blog.hubspot.com/marketing/crm-administration
-Profound vs. Bluefish AI for AEO: Which tool wins for marketers? - https://blog.hubspot.com/marketing/profound-vs-bluefish
-AI Search Optimization Isn’t The Hard Part – It’s Getting Buy-In via @sejournal, @gregjarboe - https://www.searchenginejournal.com/ai-search-optimization-isnt-the-hard-part-its-getting-buy-in/580032/
+Google Desktop CTR Climbs While Mobile Dips, Report Finds via @sejournal, @MattGSouthern - https://www.searchenginejournal.com/google-desktop-ctr-climbs-while-mobile-dips-report-finds/580527/
+81.8% Of My ‘AI Assistant’ Traffic Was Fake. The Googlebot Number Was Worse via @sejournal, @DuaneForrester - https://www.searchenginejournal.com/my-ai-assistant-traffic-was-fake-the-googlebot-number-was-worse/580052/
