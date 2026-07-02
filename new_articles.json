@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "url": "https://www.searchenginejournal.com/google-ends-cache-served-amp-pages-in-search/581405/",
+    "title": "Google Ends Cache-Served AMP Pages In Search via @sejournal, @MattGSouthern",
+    "date": "2026-07-02T20:06:10+00:00",
+    "content": "Google Search has changed how it handles AMP pages.\nAs of July 1, clicking an AMP result will take you to the domain’s AMP host page instead of a version served from Google’s AMP cache.\nIn a changelog , Google notes that it removed mentions of the AMP viewer, AMP Cache, and signed exchanges from its AMP documentation.\nClicking an AMP result used to cause Google to serve the page from its AMP Cache, which displayed in the AMP viewer with a google.com URL. Signed exchanges let the domain’s original URL be displayed instead of the Google-hosted version.\nNow, Google is discontinuing the AMP Cache serving path and links to the domain’s AMP host page instead.\nPer the updated AMP documentation , the AMP URL is visible when people click from Search.\nThe way Google serves AMP pages has gradually changed over the years, beginning in 2021, when Google dropped AMP as a requirement for the Top Stories carousel and retired the AMP lightning-bolt icon from search results.\nGoogle News on mobile had already begun bypassing AMP URLs , sending traffic directly to domains.\nThis update applies the same direct routing to sites within Search.\nWith this update, you no longer need the AMP cache or to configure signed exchanges to serve your own URL for AMP. For those unsure whether to keep AMP pages, the choice is now just like any other technical decision.\nThis change only affects how AMP content is delivered, not how it ranks. Google clarifies that AMP content “will continue to rank just like any other web page.”"
+  }
+]
