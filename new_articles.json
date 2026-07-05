@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "url": "https://www.searchenginejournal.com/safaris-mcp-server/581487/",
+    "title": "Safari’s New MCP Server Enables AI Debugging For SEO And CWV via @sejournal, @martinibuster",
+    "date": "2026-07-05T21:15:10+00:00",
+    "content": "Apple's WebKit announced a new MCP server for Safari, enabling AI agents to debug websites for SEO and Core Web Vitals.\nSafari announced they are introducing a new MCP server that will enable web developers and SEOs to debug websites with an AI agent. The AI agent connects to the Safari browser window and collects data like network requests and the DOM which are helpful for debugging bottlenecks related to Core Web Vitals or anything else that’s broken in the code or getting in the way with Safari browser compatibility.\nSafari browser is the number two ranked browser in the world, with an exceptionally high market share in the United States , averaging between 25% to over 30%. This makes it critical for SEOs, site owners, and developers to debug their websites for Safari compatibility.\nThe model context protocol (MCP) is an open protocol standard introduced by Anthropic in 2024 that enables AI models to connect to data sources and tools. MCP is supported by all major open source and private content management systems from Astro to WordPress and Shopify to WooCommerce. Many of the industry’s top SEO tools like Screaming Frog use MCP, plus there is support for it from Google Search Console.\nSupport for MCP within Safari can be considered a major integration that should be useful for SEOs and developers.\nThe official announcement lists these use cases for Safari MCP integration:\n“With the Safari MCP server, you no longer have to write the perfect prompt, carefully describing to your agent what you’re experiencing in the browser. You can give your agent the ability to find out for itself.”"
+  }
+]
