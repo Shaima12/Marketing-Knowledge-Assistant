@@ -1,2 +1,1 @@
-Google’s Open Knowledge Format Adds Five Trust Signals via @sejournal, @martinibuster - https://www.searchenginejournal.com/googles-open-knowledge-format-adds-five-trust-signals/584120/
-Google’s Mueller: Fix Conflicting Metadata, Don’t Test It via @sejournal, @MattGSouthern - https://www.searchenginejournal.com/googles-mueller-fix-conflicting-metadata-dont-test-it/584055/
+How Perplexity Actually Picks Sources (I Read The Stream, Not The Answers) via @sejournal, @suganthan - https://www.searchenginejournal.com/how-perplexity-actually-picks-sources-i-read-the-stream-not-the-answers/583769/
