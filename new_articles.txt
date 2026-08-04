@@ -1,1 +1,2 @@
-NO_NEW_ARTICLES
+Report That Cloudflare AI Bot Blocking Prevents Googlebot From Indexing Sites via @sejournal, @martinibuster - https://www.searchenginejournal.com/report-that-cloudflare-ai-bot-blocking-prevents-googlebot-from-indexing-sites/584673/
+Google Now Reports AI Search Impressions. Here’s How To Read Them via @sejournal, @cshel - https://www.searchenginejournal.com/google-reports-ai-search-impressions-how-to-read-them/582824/
