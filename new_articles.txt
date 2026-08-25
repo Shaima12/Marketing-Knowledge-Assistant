@@ -1,1 +1,1 @@
-NO_NEW_ARTICLES
+How to build an AI content system that works - https://martech.org/how-to-build-an-ai-content-system-that-works/
