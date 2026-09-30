@@ -1,3 +1,1 @@
-How to use vector embeddings in AEO - https://blog.hubspot.com/marketing/vector-embeddings-aeo
-AI search optimization tools: What actually works in 2026 - https://blog.hubspot.com/marketing/ai-search-optimization-tools
-Using Local (AI) Compute To Reduce Reliance On Frontier Models via @sejournal, @chrisgreenseo - https://www.searchenginejournal.com/using-local-ai-compute-to-reduce-reliance-on-frontier-models/591047/
+NO_NEW_ARTICLES
