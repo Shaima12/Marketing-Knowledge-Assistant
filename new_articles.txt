@@ -1,2 +1,3 @@
-Wikipedia, Podcasts & Reddit Now Drive AI Citations, Ask Your PR Team How They Did It via @sejournal, @gregjarboe - https://www.searchenginejournal.com/wikipedia-podcasts-reddit-now-drive-ai-citations-ask-your-pr-team-how-they-did-it/590994/
-States are rewriting the rules of social media - https://martech.org/states-are-starting-to-rewrite-the-rules-of-social-media/
+How to use vector embeddings in AEO - https://blog.hubspot.com/marketing/vector-embeddings-aeo
+AI search optimization tools: What actually works in 2026 - https://blog.hubspot.com/marketing/ai-search-optimization-tools
+Using Local (AI) Compute To Reduce Reliance On Frontier Models via @sejournal, @chrisgreenseo - https://www.searchenginejournal.com/using-local-ai-compute-to-reduce-reliance-on-frontier-models/591047/
