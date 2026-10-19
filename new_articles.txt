@@ -1,1 +1,3 @@
-NO_NEW_ARTICLES
+What actually happened when our blog went AI-first: A manager's account - https://blog.hubspot.com/marketing/how-ai-changed-our-editorial-process
+Best Claude skills for marketing and sales teams - https://blog.hubspot.com/marketing/best-claude-skills
+The psychological advantage of incrementality testing - https://martech.org/the-psychological-advantage-of-incrementality-testing/
