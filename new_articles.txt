@@ -1,1 +1,4 @@
-NO_NEW_ARTICLES
+How to identify content gaps for AI visibility - https://blog.hubspot.com/marketing/ai-content-gaps
+Which AI prompts should you track? A practical guide - https://blog.hubspot.com/marketing/which-prompts-to-track
+Ahrefs Brand Radar vs. Profound: Which fits your team? - https://blog.hubspot.com/marketing/ahrefs-vs-profound
+8 LLM visibility tools to track your brand across answer engines - https://blog.hubspot.com/marketing/llm-visibility-tools
