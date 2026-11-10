@@ -1,1 +1,2 @@
-NO_NEW_ARTICLES
+AEO benchmarking: What market data reveals about AI search - https://blog.hubspot.com/marketing/aeo-benchmarking
+How to use AI to write a blog post (that isn’t slop) - https://blog.hubspot.com/marketing/how-to-use-ai-to-write-a-blog-post
